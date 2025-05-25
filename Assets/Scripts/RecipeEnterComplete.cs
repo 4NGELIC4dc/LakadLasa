@@ -6,11 +6,17 @@ public class RecipeEnterComplete : MonoBehaviour
     public Animator btnBananacueAnimator;
     public Animator btnEscabechengIsdaAnimator;
 
-    // Called at the end of RecipesEnter animation
     public void PlayButtonAnimations()
     {
+        // Activate buttons before animating
+        btnTortangTalongAnimator.gameObject.SetActive(true);
+        btnBananacueAnimator.gameObject.SetActive(true);
+        btnEscabechengIsdaAnimator.gameObject.SetActive(true);
+
+        // Now play enter animations
         btnTortangTalongAnimator.SetTrigger("Enter");
         btnBananacueAnimator.SetTrigger("Enter");
         btnEscabechengIsdaAnimator.SetTrigger("Enter");
     }
+
 }
