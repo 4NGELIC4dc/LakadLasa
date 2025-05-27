@@ -2,20 +2,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float moveSpeed = 6f;
+    public float jumpForce = 12f;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private bool isGrounded = true;
 
     private int moveDirection = 0;
-    private Animator anim; 
+    private Animator anim;
+
+    public AudioClip walkSFX;
+    public AudioClip jumpSFX;
+
+    private AudioSource walkAudioSource;
+    private AudioSource sfxAudioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+
+        // Add and set up 2 separate AudioSources
+        walkAudioSource = gameObject.AddComponent<AudioSource>();
+        sfxAudioSource = gameObject.AddComponent<AudioSource>();
+
+        walkAudioSource.loop = true;
+        walkAudioSource.playOnAwake = false;
+        sfxAudioSource.playOnAwake = false;
     }
 
     void Update()
@@ -28,8 +42,21 @@ public class PlayerController : MonoBehaviour
             sr.flipX = false;
 
         anim.SetFloat("Speed", Mathf.Abs(moveDirection));
-    }
 
+        // Play walking sound responsively
+        if (isGrounded && Mathf.Abs(moveDirection) > 0)
+        {
+            if (!walkAudioSource.isPlaying)
+            {
+                walkAudioSource.clip = walkSFX;
+                walkAudioSource.Play();
+            }
+        }
+        else
+        {
+            walkAudioSource.Stop();
+        }
+    }
 
     public void MoveLeft()
     {
@@ -52,6 +79,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+
+            // Stop walk sound and play jump SFX immediately
+            walkAudioSource.Stop();
+            sfxAudioSource.PlayOneShot(jumpSFX);
         }
     }
 

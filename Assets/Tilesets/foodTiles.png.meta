@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -425,7 +425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BeefPork
+      name: beef
       rect:
         serializedVersion: 2
         x: 48
@@ -446,7 +446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: meat
+      name: pork
       rect:
         serializedVersion: 2
         x: 72
@@ -1275,10 +1275,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BeefPork: 1231316060
       apple: -261102631
       avocado: -850771978
       banana: 1979369072
+      beef: 1231316060
       broccoli: 962369415
       brown sugar: 431173315
       cabbage: 390840016
@@ -1302,7 +1302,6 @@ TextureImporter:
       honey: -1292309166
       ketchup: -658532636
       lemon: -1649912018
-      meat: -1507555027
       milk: 893380097
       mushrooms: -748009152
       olive oil: -750743370
@@ -1311,6 +1310,7 @@ TextureImporter:
       orange: -341699360
       pepper: -1430493709
       pomegranate: -1501741710
+      pork: -1507555027
       potatoes: -1654909973
       radish1: 528574547
       radish2: -1419447892
