@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 public class CookingPot : MonoBehaviour
 {
     [Header("UI Groups")]
-    public GameObject winLoseMenuGroup; // Group with WinLose UI
-    public Image winImage;               // UI Image for win_TortangTalong
-    public Image loseImage;              // UI Image for lose_TortangTalong
+    public GameObject winLoseMenuGroup; 
+    public Image winImage;               
+    public Image loseImage;              
 
     [Header("Buttons")]
-    public Button retryButton;          // Retry button under WinLoseGroup
-    public Button exitButton;           // Exit button under WinLoseGroup
+    public Button retryButton;         
+    public Button exitButton;          
 
     [Header("Player")]
     public GameObject player;
@@ -22,13 +22,10 @@ public class CookingPot : MonoBehaviour
         {
             PlayerController playerController = collision.GetComponent<PlayerController>();
 
-            // Show the win/lose UI group
             winLoseMenuGroup.SetActive(true);
 
-            // Disable player movement
             player.SetActive(false);
 
-            // Determine win or lose
             if (HasPlayerWon(playerController))
             {
                 winImage.gameObject.SetActive(true);
@@ -40,7 +37,6 @@ public class CookingPot : MonoBehaviour
                 loseImage.gameObject.SetActive(true);
             }
 
-            // Hook up retry and exit buttons directly here
             retryButton.onClick.RemoveAllListeners();
             retryButton.onClick.AddListener(RetryLevel);
 
@@ -51,15 +47,12 @@ public class CookingPot : MonoBehaviour
 
     private bool HasPlayerWon(PlayerController playerController)
     {
-        // Lose if no ingredients collected
         if (playerController.collectedCorrectIngredients.Count == 0 && playerController.collectedWrongIngredients.Count == 0)
             return false;
 
-        // Lose if collected wrong ingredients
         if (playerController.collectedWrongIngredients.Count > 0)
             return false;
 
-        // Must have collected all correct ingredients
         foreach (var correct in playerController.correctIngredients)
         {
             if (!playerController.collectedCorrectIngredients.Contains(correct))
@@ -72,6 +65,14 @@ public class CookingPot : MonoBehaviour
     private void RetryLevel()
     {
         Time.timeScale = 1f;
+
+        // Destroy the LevelMusicManager before reloading
+        GameObject music = GameObject.Find("LevelMusicManager");
+        if (music != null)
+        {
+            Destroy(music);
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -79,7 +80,6 @@ public class CookingPot : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        // Optionally stop/destroy music
         GameObject music = GameObject.Find("LevelMusicManager");
         if (music != null)
         {

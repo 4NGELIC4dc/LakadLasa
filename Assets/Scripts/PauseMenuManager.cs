@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    public GameObject pauseMenuGroup; // Assign PauseMenuGroup in the Inspector
-    public GameObject player;         // Assign your Player GameObject in the Inspector
+    public GameObject pauseMenuGroup; 
+    public GameObject player;         
 
     private bool isPaused = false;
 
     void Start()
     {
-        pauseMenuGroup.SetActive(false); // Hide pause UI initially
+        pauseMenuGroup.SetActive(false); 
         Time.timeScale = 1f;
     }
 
@@ -32,7 +32,6 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenuGroup.SetActive(true);
 
-        // Optional: Disable player controls (if needed separately)
         if (player != null)
             player.SetActive(false);
     }
@@ -49,15 +48,22 @@ public class PauseMenuManager : MonoBehaviour
 
     public void RetryLevel()
     {
-        Time.timeScale = 1f; // Unpause
+        Time.timeScale = 1f;
+
+        // Destroy the LevelMusicManager before reloading
+        GameObject music = GameObject.Find("LevelMusicManager");
+        if (music != null)
+        {
+            Destroy(music);
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ExitToMainMenu()
     {
-        Time.timeScale = 1f; // Unpause before exiting
+        Time.timeScale = 1f; 
 
-        // Stop/destroy the level music object
         GameObject music = GameObject.Find("LevelMusicManager");
         if (music != null)
         {

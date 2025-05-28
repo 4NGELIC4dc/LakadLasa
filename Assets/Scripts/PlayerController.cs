@@ -19,9 +19,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip pickSFX;
 
     private AudioSource walkAudioSource;
-    [HideInInspector] public AudioSource sfxAudioSource; // Exposed for Ingredient to play SFX
+    [HideInInspector] public AudioSource sfxAudioSource; 
 
-    // Ingredient tracking
     public List<string> correctIngredients = new List<string>();
     public List<string> collectedCorrectIngredients = new List<string>();
     public List<string> collectedWrongIngredients = new List<string>();
@@ -37,7 +36,6 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        // Setup AudioSources
         walkAudioSource = gameObject.AddComponent<AudioSource>();
         sfxAudioSource = gameObject.AddComponent<AudioSource>();
 
@@ -48,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Movement
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
 
         if (moveDirection == -1)
@@ -58,7 +55,6 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("Speed", Mathf.Abs(moveDirection));
 
-        // Walking sound
         if (isGrounded && Mathf.Abs(moveDirection) > 0)
         {
             if (!walkAudioSource.isPlaying)
@@ -95,7 +91,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
 
-            // Stop walk sound and play jump SFX
             walkAudioSource.Stop();
             sfxAudioSource.PlayOneShot(jumpSFX);
         }
@@ -109,7 +104,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Called when player collects an ingredient
     public void CollectIngredient(Ingredient ingredient)
     {
         if (ingredient.isCorrectIngredient)
@@ -122,14 +116,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Check win condition
     public bool HasWon()
     {
-        // Must have no wrong ingredients
         if (collectedWrongIngredients.Count > 0)
             return false;
 
-        // Must have collected all correct ingredients
         foreach (var correct in correctIngredients)
         {
             if (!collectedCorrectIngredients.Contains(correct))
