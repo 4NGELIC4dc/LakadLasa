@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     public float moveSpeed = 6f;
     public float jumpForce = 12f;
     private Rigidbody2D rb;
@@ -13,9 +16,20 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip walkSFX;
     public AudioClip jumpSFX;
+    public AudioClip pickSFX;
 
     private AudioSource walkAudioSource;
-    private AudioSource sfxAudioSource;
+    [HideInInspector] public AudioSource sfxAudioSource; // Exposed for Ingredient to play SFX
+
+    // Ingredient tracking
+    public List<string> correctIngredients = new List<string>();
+    public List<string> collectedCorrectIngredients = new List<string>();
+    public List<string> collectedWrongIngredients = new List<string>();
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -23,7 +37,7 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        // Add and set up 2 separate AudioSources
+        // Setup AudioSources
         walkAudioSource = gameObject.AddComponent<AudioSource>();
         sfxAudioSource = gameObject.AddComponent<AudioSource>();
 
@@ -34,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Movement
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
 
         if (moveDirection == -1)
@@ -43,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("Speed", Mathf.Abs(moveDirection));
 
-        // Play walking sound responsively
+        // Walking sound
         if (isGrounded && Mathf.Abs(moveDirection) > 0)
         {
             if (!walkAudioSource.isPlaying)
@@ -80,7 +95,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
 
-            // Stop walk sound and play jump SFX immediately
+            // Stop walk sound and play jump SFX
             walkAudioSource.Stop();
             sfxAudioSource.PlayOneShot(jumpSFX);
         }
@@ -92,5 +107,35 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    // Called when player collects an ingredient
+    public void CollectIngredient(Ingredient ingredient)
+    {
+        if (ingredient.isCorrectIngredient)
+        {
+            collectedCorrectIngredients.Add(ingredient.name);
+        }
+        else
+        {
+            collectedWrongIngredients.Add(ingredient.name);
+        }
+    }
+
+    // Check win condition
+    public bool HasWon()
+    {
+        // Must have no wrong ingredients
+        if (collectedWrongIngredients.Count > 0)
+            return false;
+
+        // Must have collected all correct ingredients
+        foreach (var correct in correctIngredients)
+        {
+            if (!collectedCorrectIngredients.Contains(correct))
+                return false;
+        }
+
+        return true;
     }
 }

@@ -3,7 +3,10 @@ guid: 0b863bc32dbfa62438e3932dfcaff0ff
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - walkSFX: {fileID: 8300000, guid: 6eaa832eba7e3e34ab0e1cd14443d22c, type: 3}
+  - jumpSFX: {fileID: 8300000, guid: 0fdec7f702102b140a252513de4138e2, type: 3}
+  - pickSFX: {fileID: 8300000, guid: b64f4916c884d7d43937cef16550be96, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
