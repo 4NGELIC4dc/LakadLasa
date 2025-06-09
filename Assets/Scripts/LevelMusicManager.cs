@@ -28,7 +28,7 @@ public class LevelMusicManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Kill it in non-matching scenes
+            Destroy(gameObject); 
         }
 
         DontDestroyOnLoad(gameObject);

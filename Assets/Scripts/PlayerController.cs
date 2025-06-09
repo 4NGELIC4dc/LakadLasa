@@ -14,13 +14,15 @@ public class PlayerController : MonoBehaviour
     private int moveDirection = 0;
     private Animator anim;
 
+    // SFX
     public AudioClip walkSFX;
     public AudioClip jumpSFX;
     public AudioClip pickSFX;
 
-    private AudioSource walkAudioSource;
-    [HideInInspector] public AudioSource sfxAudioSource; 
+    private AudioSource walkAudioSource; // For continuous walking sfx
+    [HideInInspector] public AudioSource sfxAudioSource; // For one-shot of jump/pick sfx
 
+    // Collecting wrong or correct ingredients
     public List<string> correctIngredients = new List<string>();
     public List<string> collectedCorrectIngredients = new List<string>();
     public List<string> collectedWrongIngredients = new List<string>();
@@ -46,15 +48,19 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Moves player horizontally
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
 
+        // Flip sprite direction
         if (moveDirection == -1)
             sr.flipX = true;
         else if (moveDirection == 1)
             sr.flipX = false;
 
+        // Set animation speed based on movement
         anim.SetFloat("Speed", Mathf.Abs(moveDirection));
 
+        // Handle walking sfx
         if (isGrounded && Mathf.Abs(moveDirection) > 0)
         {
             if (!walkAudioSource.isPlaying)
@@ -68,7 +74,7 @@ public class PlayerController : MonoBehaviour
             walkAudioSource.Stop();
         }
     }
-
+    // Called movement buttons
     public void MoveLeft()
     {
         moveDirection = -1;
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Player colliders with objects
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.contacts[0].normal.y > 0.5f)
@@ -104,6 +111,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Player colliders for ingredient collection
     public void CollectIngredient(Ingredient ingredient)
     {
         if (ingredient.isCorrectIngredient)
@@ -116,9 +124,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Check if player collected all correct ingredients
     public bool HasWon()
     {
-        if (collectedWrongIngredients.Count > 0)
+        if (collectedWrongIngredients.Count > 0) // Fail if wrong ingredients collected
             return false;
 
         foreach (var correct in correctIngredients)

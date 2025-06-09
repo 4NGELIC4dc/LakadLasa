@@ -2,36 +2,33 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;            // Player to follow
-    public float smoothSpeed = 0.125f;  // Camera smoothing
-    public float minX = 0f;             // Left boundary
-    public float maxX = 4000f;          // Right boundary
-    public float fixedY = 692f;         // Lock Y to this value
+    public Transform player; // Drag your player GameObject here
+    public Transform leftBoundary; // Drag LeftBoundary GameObject here
+    public Transform rightBoundary; // Drag RightBoundary GameObject here
 
-    private float offsetX;
+    private float cameraHalfWidth;
 
-    void Start()
+    private void Start()
     {
-        if (target != null)
-        {
-            // Use current camera position to calculate offsetX (respects manual placement)
-            offsetX = transform.position.x - target.position.x;
-        }
+        // Calculate half the width of the camera view in world units
+        cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
     }
 
     void LateUpdate()
     {
-        if (target != null)
-        {
-            float desiredX = target.position.x + offsetX;
+        if (player == null || leftBoundary == null || rightBoundary == null) return;
 
-            // Clamp X to stay within your level bounds
-            float clampedX = Mathf.Clamp(desiredX, minX, maxX);
+        // Target position to follow player
+        float targetX = player.position.x;
 
-            Vector3 targetPos = new Vector3(clampedX, fixedY, transform.position.z);
-            Vector3 smoothed = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
+        // Get boundary limits adjusted by camera width
+        float minX = leftBoundary.position.x + cameraHalfWidth;
+        float maxX = rightBoundary.position.x - cameraHalfWidth;
 
-            transform.position = smoothed;
-        }
+        // Clamp camera X position between boundaries
+        float clampedX = Mathf.Clamp(targetX, minX, maxX);
+
+        // Apply clamped position while keeping original Y and Z
+        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 }

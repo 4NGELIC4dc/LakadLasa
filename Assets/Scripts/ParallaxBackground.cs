@@ -1,9 +1,10 @@
 using UnityEngine;
 
+// Background moves at a different speed than the camera to create a parallax effect
 public class ParallaxBackground : MonoBehaviour
 {
-    public Transform cameraTransform;     // Main camera
-    public float parallaxMultiplier = 0.5f; // Adjust this for stronger/weaker effect
+    public Transform cameraTransform;    
+    public float parallaxMultiplier = 0.5f; 
 
     private Vector3 lastCameraPosition;
 

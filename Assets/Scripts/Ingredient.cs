@@ -8,13 +8,11 @@ public class Ingredient : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Play SFX
             if (PlayerController.Instance != null && PlayerController.Instance.pickSFX != null)
             {
                 PlayerController.Instance.sfxAudioSource.PlayOneShot(PlayerController.Instance.pickSFX);
             }
 
-            // Add to player’s ingredient list
             if (PlayerController.Instance != null)
             {
                 PlayerController.Instance.CollectIngredient(this);

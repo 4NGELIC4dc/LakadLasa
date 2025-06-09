@@ -6,14 +6,15 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject pauseMenuGroup; 
     public GameObject player;         
 
-    private bool isPaused = false;
+    private bool isPaused = false; // Is game paused
 
     void Start()
     {
-        pauseMenuGroup.SetActive(false); 
-        Time.timeScale = 1f;
+        pauseMenuGroup.SetActive(false); // HIdes pause menu
+        Time.timeScale = 1f; // Ensure game is running at normal speed
     }
 
+    // Toggle for pausing and resuming the game
     public void TogglePause()
     {
         if (isPaused)
@@ -26,6 +27,7 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    // Pauses game
     public void PauseGame()
     {
         isPaused = true;
@@ -36,6 +38,7 @@ public class PauseMenuManager : MonoBehaviour
             player.SetActive(false);
     }
 
+    // Resumes game
     public void ResumeGame()
     {
         isPaused = false;
@@ -46,11 +49,11 @@ public class PauseMenuManager : MonoBehaviour
             player.SetActive(true);
     }
 
+    // Reloads current level
     public void RetryLevel()
     {
         Time.timeScale = 1f;
 
-        // Destroy the LevelMusicManager before reloading
         GameObject music = GameObject.Find("LevelMusicManager");
         if (music != null)
         {
@@ -60,6 +63,7 @@ public class PauseMenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    // Exits to main menu scene
     public void ExitToMainMenu()
     {
         Time.timeScale = 1f; 

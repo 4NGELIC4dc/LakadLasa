@@ -6,17 +6,20 @@ public class MenuAndLevelLoader : MonoBehaviour
 {
     private string selectedLevel;
 
+    // References to UI checkmark GameObjects
     public GameObject checkBananacue;
     public GameObject checkTortangTalong;
     public GameObject checkEscabeche;
-
+    
+    // Call selected level
     public void SelectLevel(string levelName)
     {
-        selectedLevel = levelName;
+        selectedLevel = levelName; 
         UpdateCheckmarks(levelName);
         Debug.Log("Selected Level: " + selectedLevel);
     }
 
+    // Visible or invisble UI checkmark
     private void UpdateCheckmarks(string selected)
     {
         checkBananacue.SetActive(selected == "LVLbananacue");
@@ -24,6 +27,7 @@ public class MenuAndLevelLoader : MonoBehaviour
         checkEscabeche.SetActive(selected == "LVLescabechengisda");
     }
 
+    // Loads selected level
     public void StartSelectedLevel()
     {
         if (!string.IsNullOrEmpty(selectedLevel))
@@ -32,10 +36,11 @@ public class MenuAndLevelLoader : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No level selected!");
+            Debug.LogWarning("No level selected.");
         }
     }
 
+    // Loads main menu scene
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
