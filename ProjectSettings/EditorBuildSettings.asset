@@ -26,9 +26,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LVLbananacue.unity
     guid: 0cfd4e0627f26b041bdb031a13863b9d
+  - enabled: 1
+    path: Assets/Scenes/LVLescabechengisda.unity
+    guid: 3a39bae0e364beb4cb40c1158e402937
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 3d3cdbd81ff30dd469d712bbdd2573a1, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0c4d53046a0b24340baf07a17753a0a4, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 18cf8eea33fd0ba488aee029e4119413, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 0ed14447e6c102649881b590ea851a85, type: 2}
