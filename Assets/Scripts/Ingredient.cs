@@ -3,6 +3,7 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     public bool isCorrectIngredient;
+    public string ingredientID; // Add this field
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,11 +21,10 @@ public class Ingredient : MonoBehaviour
 
                 if (!isCorrectIngredient && GameSettingsManager.Instance.isHapticsEnabled)
                 {
-                        #if UNITY_ANDROID
+#if UNITY_ANDROID
                     Handheld.Vibrate();
-                        #endif
+#endif
                 }
-
             }
 
             Destroy(gameObject);

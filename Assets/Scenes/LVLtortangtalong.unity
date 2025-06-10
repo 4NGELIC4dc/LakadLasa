@@ -174,7 +174,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 107453823}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5e9d3cd0bd16797448a2f3d47d1ae7a8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -197,7 +197,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.003}
+  m_Offset: {x: 0, y: -0.009}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -208,7 +208,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.11, y: 0.14}
   m_EdgeRadius: 0
 --- !u!50 &107453826
 Rigidbody2D:
@@ -322,7 +322,11 @@ MonoBehaviour:
   jumpSFX: {fileID: 8300000, guid: 0fdec7f702102b140a252513de4138e2, type: 3}
   pickSFX: {fileID: 8300000, guid: b64f4916c884d7d43937cef16550be96, type: 3}
   sfxAudioSource: {fileID: 107453830}
-  correctIngredients: []
+  correctIngredients:
+  - Eggplant
+  - Salt
+  - Egg
+  - CookingOil
   collectedCorrectIngredients: []
   collectedWrongIngredients: []
 --- !u!82 &107453830
@@ -469,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Onion
 --- !u!50 &174488846
 Rigidbody2D:
   serializedVersion: 4
@@ -641,6 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 1
+  ingredientID: CookingOil
 --- !u!50 &177898202
 Rigidbody2D:
   serializedVersion: 4
@@ -1363,6 +1369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 1
+  ingredientID: Egg
 --- !u!50 &346360854
 Rigidbody2D:
   serializedVersion: 4
@@ -1629,6 +1636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 1
+  ingredientID: Eggplant
 --- !u!50 &444876649
 Rigidbody2D:
   serializedVersion: 4
@@ -1801,6 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Ketchup
 --- !u!50 &522091160
 Rigidbody2D:
   serializedVersion: 4
@@ -2050,6 +2059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Cabbage
 --- !u!50 &555706330
 Rigidbody2D:
   serializedVersion: 4
@@ -2222,6 +2232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 1
+  ingredientID: Salt
 --- !u!50 &690948336
 Rigidbody2D:
   serializedVersion: 4
@@ -2667,6 +2678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Shrimp
 --- !u!50 &863995498
 Rigidbody2D:
   serializedVersion: 4
@@ -2967,7 +2979,7 @@ MonoBehaviour:
   player: {fileID: 107453823}
   winSFX: {fileID: 8300000, guid: e84039d321c60504fbf044dd39f8d6be, type: 3}
   loseSFX: {fileID: 8300000, guid: ba5e4796583d54a449e50aab908c3234, type: 3}
-  paperSFX: {fileID: 0}
+  paperSFX: {fileID: 8300000, guid: ff5159e094c0fa94cbd3d8769462a299, type: 3}
 --- !u!61 &913335318
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3251,6 +3263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Tomato
 --- !u!50 &926672606
 Rigidbody2D:
   serializedVersion: 4
@@ -3820,50 +3833,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1259765124
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259765126}
-  - component: {fileID: 1259765125}
-  m_Layer: 0
-  m_Name: TIleToPrefabSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1259765125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259765124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045ea11260b8c714895becd3a2480705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1259765126
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259765124}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.777483, y: -1.9582607, z: 0.13028535}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1263931148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,6 +4141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Broccoli
 --- !u!50 &1322053461
 Rigidbody2D:
   serializedVersion: 4
@@ -4451,6 +4421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: SoySauce
 --- !u!50 &1344111186
 Rigidbody2D:
   serializedVersion: 4
@@ -4700,6 +4671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Cheese
 --- !u!50 &1459452238
 Rigidbody2D:
   serializedVersion: 4
@@ -6189,7 +6161,7 @@ RectTransform:
   m_GameObject: {fileID: 1522136813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 782644396}
@@ -7317,6 +7289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrectIngredient: 0
+  ingredientID: Fish
 --- !u!50 &2004568726
 Rigidbody2D:
   serializedVersion: 4
@@ -8011,7 +7984,6 @@ SceneRoots:
   - {fileID: 1290687977}
   - {fileID: 413188521}
   - {fileID: 2083057442}
-  - {fileID: 1259765126}
   - {fileID: 1318040317}
   - {fileID: 930967584}
   - {fileID: 913335321}

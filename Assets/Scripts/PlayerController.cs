@@ -120,11 +120,13 @@ public class PlayerController : MonoBehaviour
     {
         if (ingredient.isCorrectIngredient)
         {
-            collectedCorrectIngredients.Add(ingredient.name);
+            if (!collectedCorrectIngredients.Contains(ingredient.ingredientID))
+                collectedCorrectIngredients.Add(ingredient.ingredientID);
         }
         else
         {
-            collectedWrongIngredients.Add(ingredient.name);
+            if (!collectedWrongIngredients.Contains(ingredient.ingredientID))
+                collectedWrongIngredients.Add(ingredient.ingredientID);
         }
     }
 
