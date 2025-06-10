@@ -3,19 +3,30 @@ using UnityEngine.UI;
 
 public class UIButtonSFX : MonoBehaviour
 {
+    public AudioClip clickSFX; // Assign this in the inspector
+
     private AudioSource sfxSource;
 
     void Start()
     {
-        sfxSource = GameObject.Find("SFXManager").GetComponent<AudioSource>();
+        GameObject sfxManager = GameObject.Find("SFXManager");
+        if (sfxManager != null)
+        {
+            sfxSource = sfxManager.GetComponent<AudioSource>();
 
-        Button button = GetComponent<Button>();
-
-        button.onClick.AddListener(PlayClickSound);
+            if (sfxSource != null)
+            {
+                Button button = GetComponent<Button>();
+                button.onClick.AddListener(PlayClickSound);
+            }
+        }
     }
 
     void PlayClickSound()
     {
-        sfxSource.Play();
+        if (sfxSource != null && clickSFX != null)
+        {
+            sfxSource.PlayOneShot(clickSFX, GameSettingsManager.Instance.sfxVolume);
+        }
     }
 }

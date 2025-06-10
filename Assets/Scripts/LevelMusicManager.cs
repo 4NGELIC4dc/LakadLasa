@@ -6,31 +6,58 @@ public class LevelMusicManager : MonoBehaviour
     public AudioSource audioSource;
     public string[] levelsToPlayIn;
 
+    private bool isValidScene = false;
+
+    void Awake()
+    {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                Debug.LogWarning("No AudioSource found on LevelMusicManager.");
+                return;
+            }
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
         string currentScene = SceneManager.GetActiveScene().name;
 
-        bool shouldPlay = false;
         foreach (string level in levelsToPlayIn)
         {
             if (currentScene == level)
             {
-                shouldPlay = true;
+                isValidScene = true;
                 break;
             }
         }
 
-        if (shouldPlay)
+        if (isValidScene)
         {
-            audioSource.loop = true;
-            if (!audioSource.isPlaying)
-                audioSource.Play();
+            if (GameSettingsManager.Instance != null)
+            {
+                audioSource.loop = true;
+                audioSource.volume = GameSettingsManager.Instance.bgmVolume;
+
+                if (!audioSource.isPlaying)
+                    audioSource.Play();
+            }
         }
         else
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
+    }
 
-        DontDestroyOnLoad(gameObject);
+    void Update()
+    {
+        if (isValidScene && audioSource != null && GameSettingsManager.Instance != null)
+        {
+            audioSource.volume = GameSettingsManager.Instance.bgmVolume;
+        }
     }
 }

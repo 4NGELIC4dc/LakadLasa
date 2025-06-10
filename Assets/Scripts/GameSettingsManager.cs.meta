@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 3808b3d6acb877e47a5a16bacdcc4b64
+guid: 85a416766251cea46b53494744a27a95
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - clickSFX: {fileID: 8300000, guid: 09a16ade36e51f249b6169228c9bf7b0, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

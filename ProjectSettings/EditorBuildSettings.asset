@@ -5,12 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 807911a35a53d2746bc35302e0f04766
+  - enabled: 1
+    path: Assets/Scenes/GuideScene.unity
+    guid: df42278031d785041a024a3b37f80d32
+  - enabled: 1
+    path: Assets/Scenes/OptionsScene.unity
+    guid: a6bd4a40d50b74e438e9940ebd55d08c
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 22d84ed340770de4a98187472db62738
@@ -20,15 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LVLbananacue.unity
     guid: 0cfd4e0627f26b041bdb031a13863b9d
-  - enabled: 1
-    path: Assets/Scenes/CreditsScene.unity
-    guid: a7e82a2a1b6a58b4596b1d3572bb3c34
-  - enabled: 1
-    path: Assets/Scenes/GuideScene.unity
-    guid: 81be1a3d8f4cd0b45a57096473439a09
-  - enabled: 1
-    path: Assets/Scenes/OptionsScene.unity
-    guid: 7093b11033662a94db08abb0a3b81568
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0c4d53046a0b24340baf07a17753a0a4, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 0ed14447e6c102649881b590ea851a85, type: 2}

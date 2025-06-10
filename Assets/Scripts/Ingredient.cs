@@ -10,12 +10,21 @@ public class Ingredient : MonoBehaviour
         {
             if (PlayerController.Instance != null && PlayerController.Instance.pickSFX != null)
             {
-                PlayerController.Instance.sfxAudioSource.PlayOneShot(PlayerController.Instance.pickSFX);
+                PlayerController.Instance.sfxAudioSource.volume = GameSettingsManager.Instance.sfxVolume;
+                PlayerController.Instance.sfxAudioSource.PlayOneShot(PlayerController.Instance.pickSFX, GameSettingsManager.Instance.sfxVolume);
             }
 
             if (PlayerController.Instance != null)
             {
                 PlayerController.Instance.CollectIngredient(this);
+
+                if (!isCorrectIngredient && GameSettingsManager.Instance.isHapticsEnabled)
+                {
+                        #if UNITY_ANDROID
+                    Handheld.Vibrate();
+                        #endif
+                }
+
             }
 
             Destroy(gameObject);

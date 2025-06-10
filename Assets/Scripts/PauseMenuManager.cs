@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioClip paperSFX;
+    public AudioSource audioSource;
+
     public GameObject pauseMenuGroup; 
     public GameObject player;         
 
@@ -36,6 +40,12 @@ public class PauseMenuManager : MonoBehaviour
 
         if (player != null)
             player.SetActive(false);
+
+        audioSource.volume = GameSettingsManager.Instance.sfxVolume;
+        if (audioSource != null && paperSFX != null)
+        {
+            audioSource.PlayOneShot(paperSFX, GameSettingsManager.Instance.sfxVolume);
+        }
     }
 
     // Resumes game

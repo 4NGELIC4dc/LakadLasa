@@ -7,6 +7,11 @@ public class BGMManager : MonoBehaviour
 
     private string[] allowedScenes = { "MainMenu", "CreditsScene", "OptionsScene", "LevelSelect", "GuideScene" };
 
+    void Update()
+    {
+        audioSource.volume = GameSettingsManager.Instance.bgmVolume;
+    }
+
     void Awake()
     {
         if (FindObjectsOfType<BGMManager>().Length > 1)
@@ -19,6 +24,7 @@ public class BGMManager : MonoBehaviour
 
         if (!audioSource.isPlaying)
         {
+            audioSource.volume = GameSettingsManager.Instance.bgmVolume;
             audioSource.Play();
         }
 
@@ -36,6 +42,8 @@ public class BGMManager : MonoBehaviour
                 break;
             }
         }
+
+        audioSource.volume = GameSettingsManager.Instance.bgmVolume;
 
         if (shouldPlay && !audioSource.isPlaying)
         {

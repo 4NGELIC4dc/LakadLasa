@@ -230,6 +230,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &240583909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240583911}
+  - component: {fileID: 240583910}
+  m_Layer: 0
+  m_Name: MainMenuUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &240583910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240583909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a796c51b94f89040bd3044f1ddfad02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &240583911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240583909}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2077.7239, y: 1157.8118, z: 8.76113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280298315
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3808b3d6acb877e47a5a16bacdcc4b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: 09a16ade36e51f249b6169228c9bf7b0, type: 3}
 --- !u!114 &280298319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +391,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 280298320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 240583910}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: LoadGuide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &280298320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +1073,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 826515052}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 240583910}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: LoadCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &826515052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3808b3d6acb877e47a5a16bacdcc4b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: 09a16ade36e51f249b6169228c9bf7b0, type: 3}
 --- !u!1 &1175672202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1241,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1175672206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 240583910}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: LoadOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1175672206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,6 +1304,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3808b3d6acb877e47a5a16bacdcc4b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: 09a16ade36e51f249b6169228c9bf7b0, type: 3}
+--- !u!1 &1559254023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1559254025}
+  - component: {fileID: 1559254024}
+  m_Layer: 0
+  m_Name: GameSettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1559254024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559254023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a416766251cea46b53494744a27a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmVolume: 1
+  sfxVolume: 1
+  isHapticsEnabled: 1
+--- !u!4 &1559254025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559254023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1433.8712, y: 1010.2775, z: 12.453642}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1632498634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,6 +1598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3808b3d6acb877e47a5a16bacdcc4b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: 09a16ade36e51f249b6169228c9bf7b0, type: 3}
 --- !u!1 &2021648254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3808b3d6acb877e47a5a16bacdcc4b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: 09a16ade36e51f249b6169228c9bf7b0, type: 3}
 --- !u!114 &2054813660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,3 +1897,5 @@ SceneRoots:
   - {fileID: 493794648}
   - {fileID: 466511682}
   - {fileID: 657528742}
+  - {fileID: 240583911}
+  - {fileID: 1559254025}

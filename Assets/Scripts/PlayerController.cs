@@ -44,6 +44,10 @@ public class PlayerController : MonoBehaviour
         walkAudioSource.loop = true;
         walkAudioSource.playOnAwake = false;
         sfxAudioSource.playOnAwake = false;
+
+        // Set SFX volumes from GameSettingsManager
+        walkAudioSource.volume = GameSettingsManager.Instance.sfxVolume;
+        sfxAudioSource.volume = GameSettingsManager.Instance.sfxVolume;
     }
 
     void Update()
@@ -98,7 +102,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
 
             walkAudioSource.Stop();
-            sfxAudioSource.PlayOneShot(jumpSFX);
+            sfxAudioSource.PlayOneShot(jumpSFX, GameSettingsManager.Instance.sfxVolume);
         }
     }
 
